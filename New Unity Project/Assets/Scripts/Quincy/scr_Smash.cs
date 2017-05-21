@@ -55,12 +55,13 @@ public class scr_Smash : MonoBehaviour, ISkill
             Vector2 directionToTarget = player2.transform.position - this.transform.position;
             float angle = Vector2.Angle(this.gameObject.transform.position, directionToTarget);
             float distance = directionToTarget.magnitude;
-            if (Mathf.Abs(angle) <= 90 && distance < 1)
+            if (Mathf.Abs(angle) <= 90 && distance < 2)
             {
                 if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
                     player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
                 if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
                     player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
+                smashAmount = 0;
             }
         }
 
@@ -70,15 +71,16 @@ public class scr_Smash : MonoBehaviour, ISkill
             Vector2 directionToTarget = player1.transform.position - this.transform.position;
             float angle = Vector2.Angle(this.gameObject.transform.forward, directionToTarget);
             float distance = directionToTarget.magnitude;
-            if (Mathf.Abs(angle) <= 90 && distance < 1)
+            if (Mathf.Abs(angle) <= 90 && distance < 2)
             {
                 if(this.gameObject.GetComponent<SpriteRenderer>().flipX)
                     player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
                 if(!this.gameObject.GetComponent<SpriteRenderer>().flipX)
                     player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
+                smashAmount = 0;
             }
         }
-        smashAmount = 0;
+       
         yield return new WaitForEndOfFrame();
     }
 }
