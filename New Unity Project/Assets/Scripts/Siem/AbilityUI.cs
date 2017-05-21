@@ -54,14 +54,14 @@ public class AbilityUI : MonoBehaviour
             {
                 if (player1.GetComponent<scr_Dash>() != null)
                 {
-                    cooldown = player1.GetComponent<scr_Dash>().DashAmount;
+                    cooldown = player1.GetComponent<scr_Dash>().CoolDown;
                     cooldownBarPlayer1.sprite = dash;
-                    cooldownBarPlayer1.fillAmount = cooldown / 2;
+                    cooldownBarPlayer1.fillAmount = cooldown / 100;
                 }
                 if (player1.GetComponent<scr_Smash>() != null)
                 {
-                    cooldown = player1.GetComponent<scr_Smash>().curCooldown;
-                    cooldownBarPlayer1.fillAmount = cooldown / 5;
+                    cooldown = player1.GetComponent<scr_Smash>().CoolDown;
+                    cooldownBarPlayer1.fillAmount = cooldown / 100;
                     if (cooldownBarPlayer1.fillAmount <= 0)
                     {
                         cooldownBarPlayer1.sprite = fist;
@@ -90,14 +90,14 @@ public class AbilityUI : MonoBehaviour
             {
                 if (player2.GetComponent<scr_Dash>() != null)
                 {
-                    cooldown = player2.GetComponent<scr_Dash>().DashAmount;
+                    cooldown = player2.GetComponent<scr_Dash>().CoolDown;
                     cooldownBarPlayer2.sprite = dash;
-                    cooldownBarPlayer2.fillAmount = cooldown / 2;
+                    cooldownBarPlayer2.fillAmount = cooldown / 100;
                 }
                 if (player2.GetComponent<scr_Smash>() != null)
                 {
-                    cooldown = player2.GetComponent<scr_Smash>().curCooldown;
-                    cooldownBarPlayer2.fillAmount = cooldown / 5;
+                    cooldown = player2.GetComponent<scr_Smash>().CoolDown;
+                    cooldownBarPlayer2.fillAmount = cooldown / 100;
                     if (cooldownBarPlayer2.fillAmount <= 0)
                     {
                         cooldownBarPlayer2.sprite = fist;

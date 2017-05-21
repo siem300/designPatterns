@@ -20,14 +20,17 @@ public class scr_PlayerSpawn : MonoBehaviour
         {
             if (spawnlist[i] == 1)
             {
-                GameObject gameObject = Instantiate(players[0], new Vector3(0,0,0), Quaternion.identity) as GameObject;
+                GameObject player = Instantiate(players[0], new Vector3(0,0,0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
-                     gameObject.tag = "1";
+                    player.tag = "1";
+                    player.GetComponent<Player>().setSkill(player.AddComponent<scr_Dash>());
+                    
                 }
                 else if(i == 1)
                 {
-                    gameObject.tag = "2";
+                    player.tag = "2";
+                    player.GetComponent<Player>().setSkill(player.AddComponent<scr_Dash>());
                 }
             }
             if (spawnlist[i] == 2)
@@ -35,7 +38,7 @@ public class scr_PlayerSpawn : MonoBehaviour
                 GameObject player = Instantiate(players[1], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
-                    player.tag = "1";
+                    player.tag = "1";                    
                 }
                 else if(i == 1)
                 {
@@ -44,14 +47,16 @@ public class scr_PlayerSpawn : MonoBehaviour
             }
             if (spawnlist[i] == 3)
             {
-                GameObject player = Instantiate(players[2], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                GameObject player = Instantiate(players[0], new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
                     player.tag = "1";
+                    player.GetComponent<Player>().setSkill(player.AddComponent<scr_Smash>());
                 }
                 else if(i == 1)
                 {
                     player.tag = "2";
+                    player.GetComponent<Player>().setSkill(player.AddComponent<scr_Smash>());
                 }
             }
         }

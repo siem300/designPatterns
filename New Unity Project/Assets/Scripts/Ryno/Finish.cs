@@ -44,8 +44,6 @@ public class Finish : MonoBehaviour {
             player1Dead = false;
         }
 
-        Debug.Log(SceneManager.GetActiveScene().name);
-
         if (player1ReachedFinish && player2ReachedFinish)
         {
 

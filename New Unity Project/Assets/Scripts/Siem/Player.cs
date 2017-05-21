@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 
     public int movementSpeed;
     public int jumpForce;
-    public float skillCooldown;
 
     public bool isTouchingGround;
     public Transform playerGroundCheck;
@@ -26,11 +25,12 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip jumpClip, skillClip, deathClip;
 
+    ISkill skill;
+
     // Use this for initialization
     void Start()
     {
         characterAnimator = GetComponent<Animator>();
-        Debug.Log(this.tag);
         horizontalInput = "Horizontal" + this.tag;
         jumpInput = "Jump" + this.tag;
         UseSkillInput = "UseSkill" + this.tag;
@@ -39,9 +39,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        skillCooldown -= Time.deltaTime;
         float inputX = Input.GetAxis(horizontalInput);
         moveDirection = new Vector2(inputX * movementSpeed, this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
+        skill.UpdateCoolDown();
 
         if (isTouchingGround && Input.GetButton(horizontalInput))
         {
@@ -65,16 +65,16 @@ public class Player : MonoBehaviour
             if (Input.GetAxis(horizontalInput) > 0)
             {
                 GetComponent<SpriteRenderer>().flipX = false;
-                characterAnimator.Play(jumpInput);
+                characterAnimator.Play("jump");
             }
             else if (Input.GetAxis(horizontalInput) < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
-                characterAnimator.Play(jumpInput);
+                characterAnimator.Play("jump");
             }
             else
             {
-                characterAnimator.Play(jumpInput);
+                characterAnimator.Play("jump");
             }
         }
         else
@@ -85,10 +85,15 @@ public class Player : MonoBehaviour
         JumpLogic();
 
 
-        if (Input.GetButtonDown(UseSkillInput) && skillCooldown <= 0)
+        if (Input.GetButton(UseSkillInput))
         {
-            UseSkill();
+            skill.executeSkill();
         }
+        else
+        {
+            skill.usingSkill = false;
+        }
+
     }
 
     public virtual void JumpLogic()
@@ -129,11 +134,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    void UseSkill()
-    {
-
-    }
-
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.tag == "DeathWall")
@@ -141,6 +141,11 @@ public class Player : MonoBehaviour
             Camera.main.GetComponent<AudioSource>().PlayOneShot(deathClip);
             Destroy(this.gameObject);
         }
+    }
+
+    public void setSkill(ISkill iSkill)
+    {
+        skill = iSkill;
     }
 
     void OnDestroy()
