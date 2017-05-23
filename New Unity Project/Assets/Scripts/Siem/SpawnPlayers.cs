@@ -10,7 +10,7 @@ public class SpawnPlayers : MonoBehaviour {
     //assigned in the inspector
     private int playerNumber;
 
-    public GameObject[] players;
+    public GameObject player;
     public scr_PlayerSpawn parentScript;
 
 	// Use this for initialization

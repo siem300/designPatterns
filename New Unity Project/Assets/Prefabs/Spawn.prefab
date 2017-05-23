@@ -16,10 +16,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000011271530874}
-  - 114: {fileID: 114000010266331526}
+  - component: {fileID: 4000011271530874}
+  - component: {fileID: 114000010266331526}
   m_Layer: 0
   m_Name: Spawn
   m_TagString: Untagged
@@ -34,12 +34,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014249905512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.301, y: -2.43, z: 0}
+  m_LocalPosition: {x: 6.1, y: 2.4380755, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114000010266331526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -52,7 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPosition: {fileID: 4000011271530874}
-  players:
-  - {fileID: 1000010897456478, guid: 40735f4237817a248bec453b941e77a2, type: 2}
-  - {fileID: 1000010373412250, guid: 7098d12388b4d39458d607901ace1dec, type: 2}
-  - {fileID: 1000013340582104, guid: 39c8001291ac83141b76593e3bea895d, type: 2}
+  player: {fileID: 1000010897456478, guid: 40735f4237817a248bec453b941e77a2, type: 2}
+  parentScript: {fileID: 0}
