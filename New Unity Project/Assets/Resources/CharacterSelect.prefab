@@ -502,7 +502,6 @@ MonoBehaviour:
   player1: 0
   player2: 0
   counter: 0
-  playerPrefab: {fileID: 0}
   readyToSpawn: 0
 --- !u!114 &114000012506609026
 MonoBehaviour:

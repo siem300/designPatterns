@@ -10,8 +10,6 @@ public class scr_PlayerSpawn : MonoBehaviour
 
     public int counter = 0;
 
-    public GameObject playerPrefab;
-
     public bool readyToSpawn = false;
 
     public void SpawnPlayers()
@@ -20,7 +18,7 @@ public class scr_PlayerSpawn : MonoBehaviour
         {
             if (spawnlist[i] == 1)
             {
-                GameObject player = Instantiate(playerPrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+                GameObject player = Instantiate(Resources.Load("Player"), new Vector3(0,0,0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
                     player.tag = "1";
@@ -35,7 +33,7 @@ public class scr_PlayerSpawn : MonoBehaviour
             }
             if (spawnlist[i] == 2)
             {
-                GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                GameObject player = Instantiate(Resources.Load("Player"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
                     player.tag = "1";                    
@@ -47,7 +45,7 @@ public class scr_PlayerSpawn : MonoBehaviour
             }
             if (spawnlist[i] == 3)
             {
-                GameObject player = Instantiate(playerPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                GameObject player = Instantiate(Resources.Load("Player"), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 if (i == 0)
                 {
                     player.tag = "1";
