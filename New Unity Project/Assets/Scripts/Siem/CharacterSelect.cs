@@ -9,13 +9,9 @@ public class CharacterSelect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (GameStateManager.IsCharacterSelect)
+        if (StateContext.Instance.getState() != "CharacterSelect")
         {
-            GetComponent<Canvas>().enabled = true;
-        }
-        else
-        {
-            GetComponent<Canvas>().enabled = false;
+            Destroy(this.gameObject);
         }
 	}
 }

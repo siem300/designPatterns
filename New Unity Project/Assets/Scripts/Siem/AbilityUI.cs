@@ -30,7 +30,11 @@ public class AbilityUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameStateManager.IsPlay)
+        if (StateContext._instance.getState() != "Play")
+        {
+            Destroy(this);
+        }
+        if (StateContext._instance.getState() == "Play")
         {
             player1 = GameObject.FindGameObjectWithTag("1");
 
@@ -38,17 +42,14 @@ public class AbilityUI : MonoBehaviour
 
         }
 
-        if (!GameStateManager.IsPlay)
-        {
-            gameObject.GetComponent<Canvas>().enabled = false;
-        }
 
-        if (GameStateManager.IsPlay)
+
+        if (StateContext._instance.getState() == "Play")
         {
             gameObject.GetComponent<Canvas>().enabled = true;
         }
 
-        if (GameStateManager.IsPlay)
+        if (StateContext._instance.getState() == "Play")
         {
             if (player1 != null)
             {
@@ -84,7 +85,7 @@ public class AbilityUI : MonoBehaviour
         }
 
 
-        if (GameStateManager.IsPlay)
+        if (StateContext._instance.getState() == "Play")
         {
             if (player2 != null)
             {

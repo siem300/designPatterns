@@ -42,17 +42,17 @@ public class WaveSpawner : MonoBehaviour {
             timer = interval;
         }
         timer = interval;
-        if (GameStateManager.IsPlay && !placed)
+        if (StateContext._instance.getState() == "Play" && !placed)
         {
             theWave = (GameObject)Instantiate(wave, new Vector3(transform.position.x, -2.96374f, transform.position.z) + new Vector3(0, 0, 1), Quaternion.identity);
             placed = true;
         }
 
-        if (GameStateManager.IsPlay)
+        if (StateContext._instance.getState() == "Play")
         {
             if (transform.position.x - theWave.transform.position.x > theWave.GetComponent<SpriteRenderer>().bounds.extents.x * 1.95f && theWave.transform.position.x < transform.position.x)
             {
-                if (GameStateManager.IsPlay)
+                if (StateContext._instance.getState() == "Play")
                     theWave = (GameObject)Instantiate(wave, new Vector3(transform.position.x, -2.96374f, transform.position.z) + new Vector3(0, 0, 1), Quaternion.identity);
             }
         }

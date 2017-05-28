@@ -8,4 +8,9 @@ public class StateMainMenu : State {
     {
         
     }
+
+    public string returnStateType()
+    {
+        return "MainMenu";
+    }
 }

@@ -5,4 +5,5 @@ using UnityEngine;
 public interface State
 {
     void doAction(StateContext stateContext);
+    string returnStateType();
 }

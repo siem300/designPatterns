@@ -16,7 +16,6 @@ public class LoadLevel : MonoBehaviour {
 
     public void LoadLevelName(string name)
     {
-        GameStateManager.ChangeState(GameStateManager.States.CharacterSelect);
         SceneManager.LoadScene(name);
     }
 }

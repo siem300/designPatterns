@@ -54,7 +54,8 @@ public class Finish : MonoBehaviour {
             else
             {
                 SceneManager.LoadScene("Level2");
-                GameStateManager.ChangeState(GameStateManager.States.CharacterSelect);
+                StateContext._instance.setState(new StateCharacterSelect());
+                StateContext._instance.requestAction();
             }
         }
         else if(player1ReachedFinish && player2Dead){
@@ -65,7 +66,8 @@ public class Finish : MonoBehaviour {
             else
             {
                 SceneManager.LoadScene("Level2");
-                GameStateManager.ChangeState(GameStateManager.States.CharacterSelect);
+                StateContext._instance.setState(new StateCharacterSelect());
+                StateContext._instance.requestAction();
             }
         }
         else if(player2ReachedFinish && player1Dead){
@@ -76,7 +78,8 @@ public class Finish : MonoBehaviour {
             else
             {
                 SceneManager.LoadScene("Level2");
-                GameStateManager.ChangeState(GameStateManager.States.CharacterSelect);
+                StateContext._instance.setState(new StateCharacterSelect());
+                StateContext._instance.requestAction();
             }
         }
 	}

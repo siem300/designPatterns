@@ -8,4 +8,8 @@ public class StateCharacterSelect : State {
     {
         GameObject UICharacterSelect = GameObject.Instantiate(Resources.Load("CharacterSelect")) as GameObject;
     }
+    public string returnStateType()
+    {
+        return "CharacterSelect";
+    }
 }

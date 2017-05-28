@@ -26,7 +26,8 @@ public class scr_CharacterSelected : MonoBehaviour
             Debug.Log(parentScript.player2 + " " + parentScript.player1);
             parentScript.StoreCharacter(2);
             parentScript.SpawnPlayers();
-            GameStateManager.ChangeState(GameStateManager.States.Play);
+            StateContext._instance.setState(new StatePlay());
+            StateContext._instance.requestAction();
         }
 
 

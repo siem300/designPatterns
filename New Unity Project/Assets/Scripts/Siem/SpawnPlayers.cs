@@ -21,7 +21,7 @@ public class SpawnPlayers : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (GameObject.FindGameObjectsWithTag("1").Length <= 0 && GameObject.FindGameObjectsWithTag("2").Length <= 0 && GameStateManager.IsPlay)
+        if (GameObject.FindGameObjectsWithTag("1").Length <= 0 && GameObject.FindGameObjectsWithTag("2").Length <= 0 && StateContext._instance.getState() == "Play")
         {
             parentScript.readyToSpawn = true;
             parentScript.SpawnPlayers();

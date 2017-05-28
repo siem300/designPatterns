@@ -8,5 +8,10 @@ public class StateGameOver : State {
     {
         
     }
-    
+
+    public string returnStateType()
+    {
+        return "GameOver";
+    }
+
 }

@@ -52,12 +52,12 @@ public class CameraScript : MonoBehaviour {
         }
         else
         {
-            if (player1 == null && GameStateManager.IsPlay)
+            if (player1 == null && StateContext._instance.getState() == "Play")
             {
                 averagePosition = player2.transform.position;
                 StartCoroutine(CameraMoveToFirst());
             }
-            else if (player2 == null && GameStateManager.IsPlay)
+            else if (player2 == null && StateContext._instance.getState() == "Play")
             {
                 averagePosition = player1.transform.position;
                 StartCoroutine(CameraMoveToFirst());
