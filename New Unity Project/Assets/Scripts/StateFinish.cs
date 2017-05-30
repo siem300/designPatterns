@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class StatePlay : State
-{
+public class StateFinish : State {
 
     public void doAction(StateContext stateContext)
     {
-        GameObject UIAbility = GameObject.Instantiate(Resources.Load("AbilityUI")) as GameObject;
+        GameObject UIAbility = GameObject.Instantiate(Resources.Load("FinishUI")) as GameObject;
     }
+
     public string returnStateType()
     {
-        return "Play";
+        return "Finish";
     }
 }
