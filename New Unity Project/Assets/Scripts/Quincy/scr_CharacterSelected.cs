@@ -11,7 +11,7 @@ public class scr_CharacterSelected : MonoBehaviour
 
     public void SelectThisChar(int number)
     {
-        parentScript = gameObject.GetComponentInParent<scr_PlayerSpawn>();
+        parentScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<scr_PlayerSpawn>();
 
 
         if (parentScript.player1 == 0 && parentScript.player2 == 0)

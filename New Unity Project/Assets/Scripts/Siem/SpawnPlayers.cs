@@ -15,7 +15,7 @@ public class SpawnPlayers : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        parentScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<scr_PlayerSpawn>();
 	}
 	
 	// Update is called once per frame
