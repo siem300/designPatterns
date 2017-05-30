@@ -12,6 +12,7 @@ public class Finish : MonoBehaviour {
     public bool player1Dead;
     public bool player2Dead;
     public bool loadMainMenu;
+    private bool createdFinishUI;
 
 	// Use this for initialization
 	void Start () {
@@ -53,9 +54,12 @@ public class Finish : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene("Level2");
-                StateContext._instance.setState(new StateCharacterSelect());
-                StateContext._instance.requestAction();
+                if (!createdFinishUI)
+                {
+                    createdFinishUI = true;
+                    StateContext._instance.setState(new StateFinish());
+                    StateContext._instance.requestAction();
+                }
             }
         }
         else if(player1ReachedFinish && player2Dead){
@@ -65,9 +69,12 @@ public class Finish : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene("Level2");
-                StateContext._instance.setState(new StateCharacterSelect());
-                StateContext._instance.requestAction();
+                if (!createdFinishUI)
+                {
+                    createdFinishUI = true;
+                    StateContext._instance.setState(new StateFinish());
+                    StateContext._instance.requestAction();
+                }
             }
         }
         else if(player2ReachedFinish && player1Dead){
@@ -77,9 +84,12 @@ public class Finish : MonoBehaviour {
             }
             else
             {
-                SceneManager.LoadScene("Level2");
-                StateContext._instance.setState(new StateCharacterSelect());
-                StateContext._instance.requestAction();
+                if (!createdFinishUI)
+                {
+                    createdFinishUI = true;
+                    StateContext._instance.setState(new StateFinish());
+                    StateContext._instance.requestAction();
+                }
             }
         }
 	}

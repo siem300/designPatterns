@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StatePlay : State {
+public class StatePlay : State
+{
 
     public void doAction(StateContext stateContext)
     {
