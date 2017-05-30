@@ -21,15 +21,21 @@ public class AbilityUI : MonoBehaviour
     public Sprite jump;
     public Sprite dash;
 
+    Text ranking;
+
+
     // Use this for initialization
     void Start()
     {
+        ranking = gameObject.GetComponent<Text>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        ranking.text = RankManager.Instance().getNumber1() + "\n" + RankManager.Instance().getNumber2();
+
         if (StateContext._instance.getState() != "Play")
         {
             Destroy(this);
