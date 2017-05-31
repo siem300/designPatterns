@@ -75,18 +75,6 @@ public class AbilityUI : MonoBehaviour
                         cooldownBarPlayer1.fillAmount = 1;
                     }
                 }
-                if (player1.GetComponent<PlayerDoubleJump>() != null)
-                {
-                    if (player1.GetComponent<PlayerDoubleJump>().CanStillJump > 1)
-                    {
-                        cooldownBarPlayer1.sprite = jump;
-                        cooldownBarPlayer1.fillAmount = 1;
-                    }
-                    else
-                    {
-                        cooldownBarPlayer1.fillAmount = 0;
-                    }
-                }
             }
         }
 
@@ -109,18 +97,6 @@ public class AbilityUI : MonoBehaviour
                     {
                         cooldownBarPlayer2.sprite = fist;
                         cooldownBarPlayer2.fillAmount = 1;
-                    }
-                }
-                if (player2.GetComponent<PlayerDoubleJump>() != null)
-                {
-                    if (player2.GetComponent<PlayerDoubleJump>().CanStillJump > 1)
-                    {
-                        cooldownBarPlayer2.sprite = jump;
-                        cooldownBarPlayer2.fillAmount = 1;
-                    }
-                    else
-                    {
-                        cooldownBarPlayer2.fillAmount = 0;
                     }
                 }
             }
