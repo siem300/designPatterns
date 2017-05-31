@@ -52,32 +52,38 @@ public class scr_Smash : MonoBehaviour, ISkill
         if(this.gameObject.tag == "1")
         {
             GameObject player2 = GameObject.FindGameObjectWithTag("2");
-            Vector2 directionToTarget = player2.transform.position - this.transform.position;
-            float angle = Vector2.Angle(this.gameObject.transform.position, directionToTarget);
-            float distance = directionToTarget.magnitude;
-            if (Mathf.Abs(angle) <= 90 && distance < 2)
+            if (player2 != null)
             {
-                if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
-                    player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
-                if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
-                    player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
-                smashAmount = 0;
+                Vector2 directionToTarget = player2.transform.position - this.transform.position;
+                float angle = Vector2.Angle(this.gameObject.transform.position, directionToTarget);
+                float distance = directionToTarget.magnitude;
+                if (Mathf.Abs(angle) <= 90 && distance < 2)
+                {
+                    if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                        player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
+                    if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                        player2.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
+                    smashAmount = 0;
+                }
             }
         }
 
         if(this.gameObject.tag == "2")
         {
             GameObject player1 = GameObject.FindGameObjectWithTag("1");
-            Vector2 directionToTarget = player1.transform.position - this.transform.position;
-            float angle = Vector2.Angle(this.gameObject.transform.forward, directionToTarget);
-            float distance = directionToTarget.magnitude;
-            if (Mathf.Abs(angle) <= 90 && distance < 2)
+            if (player1 != null)
             {
-                if(this.gameObject.GetComponent<SpriteRenderer>().flipX)
-                    player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
-                if(!this.gameObject.GetComponent<SpriteRenderer>().flipX)
-                    player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
-                smashAmount = 0;
+                Vector2 directionToTarget = player1.transform.position - this.transform.position;
+                float angle = Vector2.Angle(this.gameObject.transform.forward, directionToTarget);
+                float distance = directionToTarget.magnitude;
+                if (Mathf.Abs(angle) <= 90 && distance < 2)
+                {
+                    if (this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                        player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(-10, -2) * 300);
+                    if (!this.gameObject.GetComponent<SpriteRenderer>().flipX)
+                        player1.GetComponent<Rigidbody2D>().AddForce(new Vector2(10, -2) * 300);
+                    smashAmount = 0;
+                }
             }
         }
        

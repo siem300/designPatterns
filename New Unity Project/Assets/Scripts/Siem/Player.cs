@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
+        JumpLogic();
         isTouchingGround = Physics2D.OverlapArea(playerGroundCheck.transform.position, playerGroundCheck2.transform.position, groundLayer);
         this.gameObject.GetComponent<Rigidbody2D>().velocity = moveDirection;
     }
@@ -125,7 +126,6 @@ public class Player : MonoBehaviour
             //Calculate how far through the jump we are as a percentage
             //apply the full jump force on the first frame, then apply less force
             //each consecutive frame
-            Debug.Log(jumpInput);
             float proportionCompleted = timer / jumpTime;
             Vector2 thisFrameJumpVector = Vector2.Lerp(Vector2.up * jumpForce, Vector2.zero, proportionCompleted);
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(thisFrameJumpVector);
