@@ -6,5 +6,6 @@ public interface ISkill{
     void executeSkill();
     void UpdateCoolDown();
     float CoolDown { get; }
+    string Tag { get; }
     bool usingSkill { get; set; }
 }

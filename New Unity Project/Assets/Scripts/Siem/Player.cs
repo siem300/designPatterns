@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using ObserverPattern;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -27,6 +29,9 @@ public class Player : MonoBehaviour
 
     ISkill skill;
 
+    AchievementSubject achievementSubject;
+    GameObject achievementSystem;
+
     // Use this for initialization
     void Start()
     {
@@ -34,6 +39,23 @@ public class Player : MonoBehaviour
         horizontalInput = "Horizontal" + this.tag;
         jumpInput = "Jump" + this.tag;
         UseSkillInput = "UseSkill" + this.tag;
+        achievementSystem = GameObject.FindGameObjectWithTag("AchievementSystem");
+        achievementSubject = GetComponent<AchievementSubject>();
+        //InitObservers();
+
+    }
+
+    private void InitObservers()
+    {
+        Subject sub = achievementSubject.GetSubject();
+        if(achievementSubject != null && achievementSystem != null)
+        {
+            sub.AddObserver(new AchievementObserver(achievementSystem));
+        }
+        else
+        {
+            Debug.LogError("No achievement system Or Subject found");
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +93,7 @@ public class Player : MonoBehaviour
             {
                 GetComponent<SpriteRenderer>().flipX = true;
                 characterAnimator.Play("jump");
+
             }
             else
             {
@@ -102,8 +125,11 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(JumpRoutine());
             audioSource.PlayOneShot(jumpClip);
+            achievementSubject.GetSubject().Notify(new JumpEvent());
         }
     }
+
+    
 
 
 
@@ -148,8 +174,13 @@ public class Player : MonoBehaviour
         skill = iSkill;
     }
 
+    public string getSkillName()
+    {
+        return skill.Tag;
+    }
+
     void OnDestroy()
     {
         //Camera.main.GetComponent<ScreenShake>().StartShaking();
-    }
+    } 
 }

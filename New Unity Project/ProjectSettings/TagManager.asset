@@ -10,6 +10,7 @@ TagManager:
   - Obstacles
   - 1
   - 2
+  - AchievementSystem
   layers:
   - Default
   - TransparentFX

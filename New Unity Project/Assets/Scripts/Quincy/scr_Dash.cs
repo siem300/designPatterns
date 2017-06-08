@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class scr_Dash : MonoBehaviour, ISkill {
 
@@ -49,6 +50,14 @@ public class scr_Dash : MonoBehaviour, ISkill {
     {
         get { return usingDash; }
         set { usingDash = value; }
+    }
+
+    public string Tag
+    {
+        get
+        {
+            return "Dash";
+        }
     }
 
     public IEnumerator Dash()

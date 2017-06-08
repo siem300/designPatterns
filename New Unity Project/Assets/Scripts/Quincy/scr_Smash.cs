@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class scr_Smash : MonoBehaviour, ISkill
 {
@@ -45,7 +46,15 @@ public class scr_Smash : MonoBehaviour, ISkill
         get { return usingSmash; }
         set { usingSmash = value; }
     }
-    
+
+    public string Tag
+    {
+        get
+        {
+            return "Smash";
+        }
+    }
+
     //set the wave's state to finished and then set to moving once next frame starts
     private IEnumerator Smash()
     {
