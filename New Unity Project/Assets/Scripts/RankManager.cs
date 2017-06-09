@@ -39,8 +39,14 @@ public class RankManager : MonoBehaviour
 
     void Update()
     {
-        newPosP1 = P1.GetComponent<Transform>();
-        newPosP2 = P2.GetComponent<Transform>();
+        if (P1 != null)
+        {
+            newPosP1 = P1.GetComponent<Transform>();
+        }
+        if (P2 != null)
+        {
+            newPosP2 = P2.GetComponent<Transform>();
+        }
 
         // Player 1 leads
         if (newPosP1.position.x > newPosP2.position.x)

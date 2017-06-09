@@ -7,16 +7,28 @@ public class PlayerData : MonoBehaviour
     private Vector2 moveDirection;
     private Animator characterAnimator;
     private float jumpTime;
+    private int jumpForce;
+
     private bool jumping = false;
     private string horizontalInput;
     private string jumpInput;
     private string useSkillInput;
+    private ISkill iSkill;
 
-	// Use this for initialization
-	void Start ()
-	{
-	    characterAnimator = GetComponent<Animator>();
-	}
+    // Use this for initialization
+    void Start()
+    {
+    }
+
+    public void Initialize(Animator animator, string horizontalInput, string jumpInput, string useSkillInput, float jumpTime, int jumpForce)
+    {
+        characterAnimator = animator;
+        this.horizontalInput = horizontalInput;
+        this.jumpInput = jumpInput;
+        this.useSkillInput = useSkillInput;
+        this.jumpTime = jumpTime;
+        this.jumpForce = jumpForce;
+    }
 
     public Vector2 MoveDirection
     {
@@ -27,13 +39,16 @@ public class PlayerData : MonoBehaviour
     public Animator CharacterAnimator
     {
         get { return characterAnimator; }
-        set { characterAnimator = value; }
     }
 
     public float JumpTime
     {
         get { return jumpTime;}
-        set { jumpTime = value; }
+    }
+
+    public int JumpForce
+    {
+        get { return jumpForce; }
     }
 
     public bool Jumping
@@ -44,19 +59,22 @@ public class PlayerData : MonoBehaviour
 
     public string HorizontalInput
     {
-        get { return horizontalInput;}
-        set { horizontalInput = value; }
+        get { return (horizontalInput + this.tag) ;}
     }
 
     public string JumpInput
     {
-        get { return jumpInput; }
-        set { jumpInput = value; }
+        get { return (jumpInput + this.tag); }
     }
 
     public string UseSkillInput
     {
-        get { return useSkillInput; }
-        set { useSkillInput = value; }
+        get { return (useSkillInput + this.tag); }
+    }
+
+    public ISkill Skill
+    {
+        get { return iSkill; }
+        set { iSkill = value; }
     }
 }

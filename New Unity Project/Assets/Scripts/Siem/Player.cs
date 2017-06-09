@@ -3,7 +3,6 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     public int movementSpeed;
-    public int jumpForce;
     public bool isTouchingGround;
     public Transform playerGroundCheck;
     public Transform playerGroundCheck2;
@@ -11,26 +10,22 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip jumpClip, skillClip, deathClip;
 
-    private ISkill skill;
+    
     private PlayerData playerData;
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         playerData = gameObject.AddComponent<PlayerData>();
-        playerData.CharacterAnimator = GetComponent<Animator>();
-        playerData.HorizontalInput = "Horizontal" + this.tag;
-        playerData.JumpInput = "Jump" + this.tag;
-        playerData.UseSkillInput = "UseSkill" + this.tag;
-        playerData.JumpTime = 0.5f;
+        playerData.Initialize(GetComponent<Animator>(), "Horizontal", "Jump", "UseSkill", 0.5f, 40);
     }
     // Update is called once per frame
     void Update()
     {
         float inputX = Input.GetAxis(playerData.HorizontalInput);
         playerData.MoveDirection = new Vector2(inputX * movementSpeed, this.gameObject.GetComponent<Rigidbody2D>().velocity.y);
-        skill.UpdateCoolDown();
+        playerData.Skill.UpdateCoolDown();
         if (isTouchingGround && Input.GetButton(playerData.HorizontalInput))
         {
             if (Input.GetAxis(playerData.HorizontalInput) > 0)
@@ -72,11 +67,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetButton(playerData.UseSkillInput))
         {
-            skill.executeSkill();
+            playerData.Skill.executeSkill();
         }
         else
         {
-            skill.usingSkill = false;
+            playerData.Skill.usingSkill = false;
         }
     }
     public virtual void JumpLogic()
@@ -103,7 +98,7 @@ public class Player : MonoBehaviour
             //apply the full jump force on the first frame, then apply less force
             //each consecutive frame
             float proportionCompleted = timer / playerData.JumpTime;
-            Vector2 thisFrameJumpVector = Vector2.Lerp(Vector2.up * jumpForce, Vector2.zero, proportionCompleted);
+            Vector2 thisFrameJumpVector = Vector2.Lerp(Vector2.up * playerData.JumpForce, Vector2.zero, proportionCompleted);
             this.gameObject.GetComponent<Rigidbody2D>().AddForce(thisFrameJumpVector);
             timer += Time.deltaTime;
             yield return null;
@@ -119,7 +114,7 @@ public class Player : MonoBehaviour
     }
     public void setSkill(ISkill iSkill)
     {
-        skill = iSkill;
+        playerData.Skill = iSkill;
     }
     void OnDestroy()
     {
