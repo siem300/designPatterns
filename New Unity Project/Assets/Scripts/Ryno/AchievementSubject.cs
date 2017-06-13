@@ -5,12 +5,14 @@ using ObserverPattern;
 
 public class AchievementSubject : MonoBehaviour {
 
-    public GameObject achievementSystem;
+    private GameObject achievementSystem;
     private Subject subject;
 
     public void Start()
     {
-        if (!achievementSystem.GetComponent<AchievementSystem>())
+        if (!achievementSystem) achievementSystem = GameObject.FindGameObjectWithTag("AchievementSystem");
+
+        if (!achievementSystem || !achievementSystem.GetComponent<AchievementSystem>())
         {
             Debug.LogError("Gameobject does not contain an AchievementSystem");
         }

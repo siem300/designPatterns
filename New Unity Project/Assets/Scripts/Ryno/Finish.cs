@@ -18,25 +18,22 @@ public class Finish : MonoBehaviour {
 
     //Private members
     private AchievementSubject achievementSubject;
-    private GameObject achievementSystem;
+    
 
 	// Use this for initialization
 	void Start () {
 
-        //InitObservers();
+        InitObservers();
 	}
 
     private void InitObservers()
     {
     achievementSubject = GetComponent<AchievementSubject>();
-        if (!achievementSubject || !achievementSystem)
+        if (!achievementSubject)
         {
             Debug.LogWarning("No achievementSubject");
             return;
         }
-
-        Subject sub = achievementSubject.GetSubject();
-        sub.AddObserver(new AchievementObserver(achievementSystem));
     }
 
     // Update is called once per frame

@@ -13,6 +13,8 @@ public class WaveSpawner : MonoBehaviour {
 
     private static WaveSpawner _instance;
 
+    private FactoryUser factoryUser;
+
     public static WaveSpawner Instance { get { return _instance; } }
 
 
@@ -30,7 +32,7 @@ public class WaveSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-       
+        factoryUser = GetComponent<FactoryUser>();
     }
 	
 	// Update is called once per frame
@@ -44,7 +46,7 @@ public class WaveSpawner : MonoBehaviour {
         timer = interval;
         if (StateContext._instance.getState() == "Play" && !placed)
         {
-            theWave = (GameObject)Instantiate(wave, new Vector3(transform.position.x, -2.96374f, transform.position.z) + new Vector3(0, 0, 1), Quaternion.identity);
+            theWave = SpawnWave();
             placed = true;
         }
 
@@ -53,10 +55,19 @@ public class WaveSpawner : MonoBehaviour {
             if (transform.position.x - theWave.transform.position.x > theWave.GetComponent<SpriteRenderer>().bounds.extents.x * 1.95f && theWave.transform.position.x < transform.position.x)
             {
                 if (StateContext._instance.getState() == "Play")
-                    theWave = (GameObject)Instantiate(wave, new Vector3(transform.position.x, -2.96374f, transform.position.z) + new Vector3(0, 0, 1), Quaternion.identity);
+
+                    theWave = SpawnWave();
             }
         }
 	}
+
+    private GameObject SpawnWave()
+    {
+        int random = Random.Range(0, 2);
+        object[] parameters = new object[1];
+        parameters[0] = random;
+        return factoryUser.UseFactory(parameters);
+    }
 
     public float Timer
     {

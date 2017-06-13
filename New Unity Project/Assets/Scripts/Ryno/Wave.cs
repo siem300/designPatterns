@@ -23,7 +23,7 @@ public class Wave : MonoBehaviour
         waveCollider = GetComponent<BoxCollider2D>();
         waveSR = GetComponent<SpriteRenderer>();
         time = interval;
-        SetColorWave();
+        //SetColorWave();
 
         //at the start, basespeed gets set to movespeed at the start of runtime so there's a set speed to return to
         baseSpeed = waveSpeed;
